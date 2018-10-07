@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+        <style type="text/css">
+
+body {background-color: rgba(155, 162, 129, 0.31)}
+h1 {text-align:center}
+table{width: 70%}
+
+</style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <h1>{{ total_num }}</h1>
+    <table align="center">
+{% for text in Textlist %}
+    <tr>
+        <td>
+    <h3><a href={{ text.link }}>{{ text.title }}</a></h3>
+        </td>
+        <td>
+    <h6>{{ text.time }}</h6>
+        </td>
+    </tr>
+{% endfor %}
+    </table>
+    <table align="center">
+        <tr>
+            <td align="center">
+                <h5><a href={{ front_page_link }}>首页</a></h5>
+            </td>
+            {% if page != '1' %}
+                <td align="center">
+                    <h5><a href={{ last_page_link }}>上一页</a></h5>
+                </td>
+            {% endif %}
+            {% if page != total_page %}
+                <td align="center">
+                    <h5><a href={{ next_page_link }}>下一页</a></h5>
+                </td>
+            {% endif %}
+            <td align="center">
+        <h5><a href={{ end_page_link }}>尾页</a></h5>
+            </td>
+        </tr>
+    </table>
+        <h4 align="center">第{{ page }}页，共{{ total_page }}页</h4>
+</body>
+</html>

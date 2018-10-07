@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style type="text/css">
+
+body {background-color: rgba(155, 162, 129, 0.31)
+}
+h1 {text-align:center}
+
+</style>
+</head>
+<body>
+    <h1>{{ Text.title }}</h1>
+    <h6>{{ Text.time }}</h6>
+    {% for para in Text.content %}
+        <p>{{ para }}</p>
+    {% endfor %}
+    <h2>新闻推荐：</h2>
+    <h2><a href={{ link1 }}> {{ title1 }}</a></h2>
+    <h2><a href={{ link2 }}> {{ title2 }}</a></h2>
+    <h2><a href={{ link3 }}> {{ title3 }}</a></h2>
+</body>
+</html>

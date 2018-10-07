@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style type="text/css">
+
+body {background-color: rgba(155, 162, 129, 0.31)
+}
+h1 {text-align:center}
+
+</style>
+</head>
+<body>
+    <h1>{{ search_title }}</h1>
+    <form action="/time_search" method="post">
+        <table>
+            <tr>
+                <td>
+                    <h3>搜索文本：</h3>
+                </td>
+                <td>
+                    <input type="text" name="content"/>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <h3>年：</h3>
+                </td>
+                <td>
+                    <input type="number" name="year"/>
+                </td>
+                <td>
+                    <h3>月：</h3>
+                </td>
+                <td>
+                    <input type="number" name="month"/>
+                </td>
+                <td>
+                    <h3>日：</h3>
+                </td>
+                <td>
+                    <input type="number" name="day"/>
+                </td>
+            </tr>
+        </table>
+            <input type="submit" value="search"/>
+
+    </form>
+</body>
+</html>

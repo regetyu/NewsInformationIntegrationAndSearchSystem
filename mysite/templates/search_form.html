@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style type="text/css">
+
+body {background-color: rgba(155, 162, 129, 0.31)
+}
+h1 {text-align:center}
+
+</style>
+</head>
+<body>
+    <h1>{{ search_title }}</h1>
+    <div style="text-align:center">
+    <form action="/search" method="post" >
+        <input type="text" style="width: 50%; height: 30%;" name="content"/>
+        <input type="submit" value="search"/>
+    </form>
+    </div>
+</body>
+</html>

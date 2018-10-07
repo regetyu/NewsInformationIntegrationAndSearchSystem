@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+        <style type="text/css">
+
+body {background-color: rgba(155, 162, 129, 0.31)}
+    p{font-size: 14px;
+        heght:200px;
+        width:1000px;
+    text-overflow: ellipsis;/*溢出显示省略号*/
+overflow: hidden;/*溢出隐藏*/
+-webkit-line-clamp: 1;/*文本显示两行,这属性只适用于-webkit-内核浏览器*/
+display: -webkit-box;/*设置伸缩盒子模型*/
+-webkit-box-orient: vertical;/*设置文本垂直排列*/}
+    table{width: 70%}
+
+</style>
+</head>
+<body>
+    <h1 align="center">{{ search_title }}</h1>
+    <h3 align="center">{{ search_time }}</h3>
+    <h3 align="center">{{ search_num }}</h3>
+{% for text in Textlist %}
+
+    <h3><a href={{ text.link }}><div name="body">{{ text.title }}</div></a></h3>
+
+    <h6>{{ text.time }}</h6>
+    {% for para in text.content %}
+        <div name="body">
+        <p>{{ para }}</p>
+        </div>
+    {% endfor %}
+{% endfor %}
+    <table align="center">
+        <tr>
+            <td align="center">
+                <h5><a href={{ front_page_link }}>首页</a></h5>
+            </td>
+            {% if page != '1' %}
+                <td align="center">
+                    <h5><a href={{ last_page_link }}>上一页</a></h5>
+                </td>
+            {% endif %}
+            {% if page != total_page %}
+                <td align="center">
+                    <h5><a href={{ next_page_link }}>下一页</a></h5>
+                </td>
+            {% endif %}
+            <td align="center">
+        <h5><a href={{ end_page_link }}>尾页</a></h5>
+            </td>
+        </tr>
+    </table>
+        <h4 align="center">第{{ page }}页，共{{ total_page }}页</h4>
+</body>
+<script>
+    function highlightByName(keywords,domName){
+        var array = keywords.split(" "); //分割
+        var targetContent=document.getElementsByName(domName);
+        for ( var t = 0; t < targetContent.length; t++) {
+            for ( var i = 0; i < array.length; i++) {
+                //创建表达式，匹配替换
+                var reg = new RegExp("(" + array[i].replace(/,/, "|") + ")", "g");
+                //替换重新写入
+                targetContent[t].innerHTML =targetContent[t].innerHTML.replace(reg,"<font color='red'>$1</font>");
+            }
+        }
+    }
+    {% for keyword in keywords %}
+    highlightByName("{{ keyword }}","body");
+    {% endfor %}
+</script>
+</html>
